@@ -4,7 +4,7 @@
     font-family for wedding date is  Dancing Script by Google
 
     Text color: rgb(4, 29, 51)
-    Background color: #d4d9a1
+    Background color: #f2dcdf
     Our Story feature box: no background color
     Sections (The day, travel, Q&A, photos, RSVP) background color: #767f63
 */
@@ -22,7 +22,7 @@
 /*body and header is selected because the display character only impacts direct children*/
 body {  
     font-family: Quicksand, Geneva, Tahoma, sans-serif;
-    background-color: #d4d9a1;
+    background-color: #f2dcdf;
     color: rgb(4, 29, 51);
 }
 
@@ -45,13 +45,19 @@ h1 {
 
 .wrap {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#main_img {
+img {
     text-align: center;
     width: 35%;
+}
+
+.story {
+    padding: 1%;
+    margin: 1%;
 }
 
 h2 {
