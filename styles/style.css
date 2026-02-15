@@ -1,4 +1,18 @@
-/*Used to remove any default styling and set to a "blank" canvas*/
+/*  
+    font-family for headings is Times New Roman
+    font- family for main text is Quicksand
+    font-family for wedding date is  Dancing Script by Google
+
+    Text color: rgb(4, 29, 51)
+    Background color: #d4d9a1
+    Our Story feature box: no background color
+    Sections (The day, travel, Q&A, photos, RSVP) background color: #767f63
+*/
+
+/*
+    Used to remove any default styling and set to a "blank" canvas.
+    Note: box-sizing: border-box; ensures all elements include padding and border in their width and height calculations
+*/
 * { box-sizing: border-box; 
     margin: 0; 
     padding: 0; 
@@ -7,15 +21,51 @@
 }
 
 /*body and header is selected because the display character only impacts direct children*/
-body, header {
-    min-height: 100vh;
-    background-color: #d4d9a1;
+body {  
     display: flex;
     /*flex-direction: column;*/
     align-items: center;
-    font-family: 'New Times Roman';
+    font-family: Quicksand;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #d4d9a1;
     color: rgb(4, 29, 51);
 }
+
+h1, h2, h3 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#date {
+    font-family: 'Dancing Script';
+}
+
+h1 {
+    font-size: 2rem;
+    padding: 3% 1% 1%;
+}
+
+h2 {
+    font-size: 1.5rem;    
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  h1 { font-size: 1.8rem; }
+
+  h2 { font-size: 1.3rem; }
+
+  h3 { font-size: 1.1rem; }
+
+}
+
 nav {
     /*styling as a flexbox item in body*/
     width: 50%;
@@ -36,20 +86,8 @@ nav {
     color: ;*/
     transition: background-color 0.3s ease;
 }
-h1 {
-    font-size: 6vw;
-    padding: 3% 1% 1%;
-}
-h2 {
-    font-family:'Times New Roman', Times, serif ;
-    font-size: 2.5vw;
-}
-h3 {
-    font-size: 2vw;
-}
-p {
-    font-size: 1.25vw;
-}
+
+
 img {
     width: 35%;
 
