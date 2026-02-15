@@ -15,18 +15,13 @@
 */
 * { box-sizing: border-box; 
     margin: 0; 
-    padding: 0; 
-    /*font: inherit; */
+    padding: 0;
     border: 0; 
 }
 
 /*body and header is selected because the display character only impacts direct children*/
 body {  
-    display: flex;
-    /*flex-direction: column;*/
-    align-items: center;
-    font-family: Quicksand;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Quicksand, Geneva, Tahoma, sans-serif;
     background-color: #d4d9a1;
     color: rgb(4, 29, 51);
 }
@@ -40,30 +35,70 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     padding: 3% 1% 1%;
 }
 
 h2 {
-    font-size: 1.5rem;    
+    font-size: 2.5rem;    
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
 
-  h1 { font-size: 1.8rem; }
+  h1 { font-size: 3.8rem; }
 
-  h2 { font-size: 1.3rem; }
+  h2 { font-size: 2.3rem; }
 
-  h3 { font-size: 1.1rem; }
+  h3 { font-size: 1.3rem; }
 
+}
+
+header {
+    display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
+}
+
+.text_header {
+    padding: 15px 0;
+}
+.spacer.clear {
+    clear: both;
+    height: 20px;
+    background-color: transparent;
+}
+
+.main-text {
+    padding: 40px;
+    background-color: #767f63;
+}
+
+footer {
+    padding: 10px;
+}
+
+/*#copyright used because p takes priority over footer elements*/
+footer, #copyright {
+    text-align: center;
+    color: #d4d9a1;
+    background-color: rgb(4, 29, 51);
+    font-size: 0.9rem;
+}
+
+.footer_link {
+    text-decoration: none;
+}
+
+h3 {
+    padding: 15px 0;
 }
 
 nav {
@@ -81,19 +116,14 @@ nav {
     padding: 2vh;
     text-decoration: none;
 }
+
 .nav_link:hover{
     /*background-color: ;
     color: ;*/
     transition: background-color 0.3s ease;
 }
 
-
 img {
     width: 35%;
-
     margin-bottom: 3%;
-}
-div {
-    background-color: #767f63;
-    margin: 1%;
 }
