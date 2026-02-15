@@ -30,13 +30,28 @@ h1, h2, h3 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-#date {
-    font-family: 'Dancing Script';
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 1.5%;
+    padding: 3%;
 }
 
-h1 {
-    font-size: 4rem;
-    padding: 3% 1% 1%;
+#date {
+    text-align: center;
+    font-family: 'Dancing Script';
+    padding-bottom: 2%;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main_img {
+    text-align: center;
+    width: 35%;
 }
 
 h2 {
@@ -61,24 +76,23 @@ p {
 
 }
 
-header {
-    display: flex;
-    /*flex-direction: column;*/
-    align-items: center;
-}
-
-.text_header {
+.main_text_header {
     padding: 15px 0;
 }
+
 .spacer.clear {
     clear: both;
     height: 20px;
     background-color: transparent;
 }
 
-.main-text {
+.main_text {
     padding: 40px;
     background-color: #767f63;
+}
+
+h3 {
+    padding: 15px 0;
 }
 
 footer {
@@ -97,22 +111,14 @@ footer, #copyright {
     text-decoration: none;
 }
 
-h3 {
-    padding: 15px 0;
-}
-
 nav {
-    /*styling as a flexbox item in body*/
-    width: 50%;
-    padding: 0px 75px;
-    margin: 2% 0%;
     /*styling as a flexbox for nav links */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .nav_link {
-    display: inline-block;
+    text-align: center;
     padding: 2vh;
     text-decoration: none;
 }
@@ -121,9 +127,4 @@ nav {
     /*background-color: ;
     color: ;*/
     transition: background-color 0.3s ease;
-}
-
-img {
-    width: 35%;
-    margin-bottom: 3%;
 }
