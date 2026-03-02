@@ -1,77 +1,169 @@
 /*  
-    font-family for headings is Times New Roman
-    font- family for main text is Quicksand
-    font-family for wedding date is  Dancing Script by Google
-
-    Text color: rgb(4, 29, 51)
-    Background color: #faeeef
-    Our Story feature box: no background color
+    font-family for headings is Times New Roman; for maintext is Quicksand; for wedding date is Dancing Script by Google
+    Text color: rgb(4, 29, 51); Background color: #faeeef; Our Story feature box: no background color
     Sections (The day, travel, Q&A, photos, RSVP) background color: rgb(4, 29, 51)
 */
-
 /*
     Used to remove any default styling and set to a "blank" canvas.
     Note: box-sizing: border-box; ensures all elements include padding and border in their width and height calculations
 */
-* { box-sizing: border-box; 
+* 
+{ 
+    box-sizing: border-box; 
     margin: 0; 
     padding: 0;
     border: 0; 
 }
-
 /*body and header is selected because the display character only impacts direct children*/
-body {  
+body 
+{  
     font-family: Quicksand, Geneva, Tahoma, sans-serif;
     background-color: #faeeef;
     color: rgb(4, 29, 51);
 }
-
-h1, h2, h3 {
+h1, h2 
+{
     font-family: 'Times New Roman', Times, serif;
 }
-
-h1 {
+h1 
+{
     text-align: center;
     font-size: 4rem;
     margin-top: 1.5%;
     padding: 3%;
 }
-
-#date {
+#date 
+{
     text-align: center;
     font-family: 'Dancing Script';
     padding-bottom: 2%;
 }
-
-.wrap {
+nav 
+{
+    /*styling as a flexbox for nav links */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav_link 
+{
+    text-align: center;
+    padding: 2vh;
+    text-decoration: none;
+}
+.nav_link:hover
+{
+    /*background-color: ;
+    color: ;*/
+    transition: background-color 0.3s ease;
+}
+/*This is being used to center the landing section image and seperately the OUR STORY section*/
+.wrap 
+{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-img {
+#main_img 
+{
     text-align: center;
     width: 35%;
 }
+.mySlides {
+    display: flex
+}
 
-.story {
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px;
+  margin-top: -22px;
+  color: rgb(4, 29, 51);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 3px;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.story 
+{
     padding: 1%;
     margin: 1%;
 }
-
-h2 {
+h2 
+{
     font-size: 2.5rem;    
 }
-
-h3 {
+h3 
+{
     font-size: 1.5rem;
 }
-
-p {
+p 
+{
     font-size: 1.2rem;
 }
-
 @media (max-width: 768px) {
 
   h1 { font-size: 3.8rem; }
@@ -81,57 +173,39 @@ p {
   h3 { font-size: 1.3rem; }
 
 }
-
-.main_text_header {
+.main_text_header 
+{
     padding: 15px 0;
 }
-
-.spacer.clear {
+.spacer.clear 
+{
     clear: both;
     height: 20px;
     background-color: transparent;
 }
-
-.main_text {
+.main_text 
+{
     padding: 40px;
     color: #d4d9a1;
     background-color: rgb(4, 29, 51);
 }
-
-h3 {
+h3 
+{
     padding: 15px 0;
 }
-
-footer {
+footer 
+{
     padding: 10px;
 }
-
 /*#copyright used because p takes priority over footer elements*/
-footer, #copyright {
+footer, #copyright 
+{
     text-align: center;
     color: #d4d9a1;
     background-color: rgb(4, 29, 51);
     font-size: 0.9rem;
 }
-
-.footer_link {
+.footer_link 
+{
     text-decoration: none;
-}
-
-nav {
-    /*styling as a flexbox for nav links */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.nav_link {
-    text-align: center;
-    padding: 2vh;
-    text-decoration: none;
-}
-
-.nav_link:hover{
-    /*background-color: ;
-    color: ;*/
-    transition: background-color 0.3s ease;
 }
