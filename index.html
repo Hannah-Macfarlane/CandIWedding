@@ -29,20 +29,22 @@
             <a class="nav_link" href="#nav5">SHARE YOUR PHOTOS</a>
             <a class="nav_link" href="#nav6">RSVP</a>
         </nav>
-        <div class="wrap">
+        <div> <!--This was class="wrap"-->
             <img id="main_img" src="images/IainAndCaroline.jpg" , alt="Caroline and Iain on their engagement" />
         </div>
-        <div class="wrap">
-            <h2 class="story" id="nav1">OUR STORY</h2>
+        <!-- This is the animated story section -->
+        <div class="animate progress"></div>
+        <section class="animate hero hero-1">
+            <h2 class="animate" id="story nav1">OUR STORY</h2>
             <p>Iain was an hour and a half late for our first date - he started as he meant to go on -
                 but Caroline was patience personified. The conversation flowed straight away, and we ended
-                up staying together long into the evening.<br>After three and a half happy years together,
+                up staying together long into the evening.<br><br>After three and a half happy years together,
                 we really can’t imagine being apart. We love the adventure of building a home together,
                 and making each other happy. We’ve both had our fair share of heartache, and we’re simply
-                thankful that we have found each other.<br>We complete each other, and we’re excited to
+                thankful that we have found each other.<br><br>We complete each other, and we’re excited to
                 celebrate that with you, our favourite people. Thank you for your friendship and love, and
                 for making the time to be with us on our wedding day.</p>
-        </div>
+        </section>
         <!-- Slideshow container -->
         <div class="slideshow-container">
 
@@ -135,6 +137,17 @@
     </footer>
 </body>
 <script>
+    const root = document.body.style;
+
+    const scroll = () => {
+        const position = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
+        root.setProperty('--scroll', position);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        scroll();
+        window.addEventListener('scroll', scroll, false);
+    });
     let slideIndex = 1;
     showSlides(slideIndex);
 
