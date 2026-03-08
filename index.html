@@ -33,15 +33,10 @@
         <section id="nav1" class="content-section">
             <h2 class="section-title">Our Story</h2>
             <div class="story-grid">
-                <div class="story-text">
-                    <p>Iain was an hour and a half late for our first date—he started as he meant to go on—but Caroline
-                        was patience personified. The conversation flowed straight away, and we ended up staying
-                        together long into the evening.</p>
-                    <p>After three and a half happy years together, we really can’t imagine being apart. We love the
-                        adventure of building a home together and making each other happy.</p>
-                </div>
-
                 <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="images/IainAndCaroline.jpg" alt="Caroline and Iain on their engagement">
+                    </div>
                     <div class="mySlides fade">
                         <img src="images/FirstWeeks1.jpeg" alt="Caroline and Iain on their first date">
                     </div>
@@ -51,8 +46,27 @@
                     <div class="mySlides fade">
                         <img src="images/FirstWeeks3.jpeg" alt="Caroline and Iain on holiday">
                     </div>
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <div class="dot-container">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+
+                <div class="story-text">
+                    <div class="story-text-inner">
+                        <p>Iain was an hour and a half late for our first date — he started as he meant to go on — but
+                            Caroline
+                            was patience personified. The conversation flowed straight away, and we ended up staying
+                            together long into the evening.</p>
+                        <p>After three and a half happy years together, we really can’t imagine being apart. We love the
+                            adventure of building a home together and making each other happy.
+                        <p> We’ve both had our fair share of heartache, and we’re simply thankful that we have found
+                            each other.
+                            We complete each other, and we’re excited to celebrate
+                            that with you, our favourite people.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -95,7 +109,7 @@
 
         <section id="nav4" class="info-card">
             <h2 class="section-title">The Menu</h2>
-            <p class="text-center" style="margin-bottom: 2rem;">Please take a look at our wedding breakfast options. 
+            <p class="text-center" style="margin-bottom: 2rem;">Please take a look at our wedding breakfast options.
                 Please provide us with your party's order when you RVSP.</p>
 
             <div class="menu-grid">
@@ -120,7 +134,8 @@
                     </div>
                     <div class="menu-item">
                         <h4>Avocado Salad</h4>
-                        <p>Smashed avocado with artichoke and walnut salad, and mixed peppers served with homemade bread</p>
+                        <p>Smashed avocado with artichoke and walnut salad, and mixed peppers served with homemade bread
+                        </p>
                     </div>
                 </div>
 
@@ -136,7 +151,8 @@
                     <div class="menu-item">
                         <h4>Veg Nut Roast</h4>
                     </div>
-                    <p class="menu-note"><em>All mains are served with seasonal vegetables, roast potatoes and Yorkshire pudding.</em></p>
+                    <p class="menu-note"><em>All mains are served with seasonal vegetables, roast potatoes and Yorkshire
+                            pudding.</em></p>
                 </div>
 
                 <div class="menu-category">
@@ -217,45 +233,62 @@
     </footer>
 
     <script>
+        // --- Countdown Logic ---
         const weddingDate = new Date("May 16, 2026").getTime();
 
         function displayDaysOnly() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
-
-            // Calculate only the days remaining
             const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
-
             const countdownElement = document.getElementById("countdown");
 
             if (distance < 0) {
                 countdownElement.innerHTML = "<h3>The Celebration has Begun!</h3>";
             } else {
                 countdownElement.innerHTML = `
-            <div class="countdown-item">
-                <span class="countdown-number">${days}</span>
-                <span class="countdown-label">Days to go</span>
-            </div>
-        `;
+                <div class="countdown-item">
+                    <span class="countdown-number">${days}</span>
+                    <span class="countdown-label">Days to go</span>
+                </div>`;
+            }
+        }
+        displayDaysOnly();
+
+        // --- Slideshow Logic ---
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            if (dots.length > 0) {
+                dots[slideIndex - 1].className += " active-dot";
             }
         }
 
-        // Run once on page load
-        displayDaysOnly();
+        setInterval(() => {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 4000);
 
-        // Simple Slide Script
-        let slideIndex = 1;
-        showSlides(slideIndex);
-        function plusSlides(n) { showSlides(slideIndex += n); }
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        // Sticky Nav logic
+        // --- Navigation & Accordion Logic ---
         window.onscroll = function () {
             let nav = document.getElementById("navbar");
             if (window.pageYOffset > window.innerHeight * 0.7) {
@@ -265,23 +298,16 @@
             }
         };
 
-        // Accordion Logic
         const questions = document.querySelectorAll(".qa-question");
-
         questions.forEach(question => {
             question.addEventListener("click", function () {
                 this.classList.toggle("active");
                 const content = this.nextElementSibling;
-
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    // This allows the browser to calculate the exact height needed
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
             });
         });
     </script>
+
 </body>
 
 </html>

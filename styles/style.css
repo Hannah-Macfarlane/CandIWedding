@@ -159,6 +159,110 @@ nav.sticky {
     margin-bottom: 2rem;
 }
 
+/* Improved Grid with more breathing room */
+.story-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Slightly larger area for the image */
+    gap: 5rem; /* Increased gap for a cleaner look */
+    align-items: center; /* Vertically centers the text against the image */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Text Container Adjustments */
+.story-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.story-text-inner {
+    border-left: 2px solid var(--accent); /* Subtle decorative line */
+    padding-left: 2rem;
+}
+
+.story-text p {
+    font-size: 1.15rem; /* Slightly larger for readability */
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    text-align: justify; /* Optional: creates clean edges */
+}
+
+/* A "Lead" paragraph style for impact */
+.story-lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.6rem !important;
+    color: var(--primary);
+    margin-bottom: 1rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 900px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .story-text-inner {
+        border-left: none;
+        border-top: 2px solid var(--accent);
+        padding-left: 0;
+        padding-top: 2rem;
+        text-align: center;
+    }
+}
+
+/* Dots Navigation */
+.dot-container {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: var(--grey);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.active-dot, .dot:hover {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+    
+    .slideshow-container {
+        order: -1; /* Keep images on top when stacked */
+        max-width: 100%;
+    }
+}
+
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySlides img {
+    width: 100%;
+    border-radius: 8px;
+}
+
 /* Cards */
 .info-card {
     background: white;
@@ -178,18 +282,6 @@ nav.sticky {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     text-align: center;
-}
-
-/* Slideshow */
-.slideshow-container {
-    position: relative;
-    max-width: 500px;
-    margin: auto;
-}
-
-.mySlides img {
-    width: 100%;
-    border-radius: 8px;
 }
 
 /* Menu Specific Styling */
