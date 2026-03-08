@@ -192,6 +192,50 @@ nav.sticky {
     border-radius: 8px;
 }
 
+/* Menu Specific Styling */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.menu-category h3 {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.4rem;
+}
+
+.menu-item {
+    margin-bottom: 1.5rem;
+}
+
+.menu-item h4 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+}
+
+.menu-item p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.menu-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--secondary);
+    border-radius: 4px;
+    border: var(--accent) 1px solid;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 /* Q&A Accordion Styles */
 .qa-item {
     border-bottom: 1px solid rgba(212, 217, 161, 0.3);
@@ -215,7 +259,6 @@ nav.sticky {
     align-items: center;
     transition: color 0.3s ease;
 }
-
 
 .qa-question:after {
     content: '+';
