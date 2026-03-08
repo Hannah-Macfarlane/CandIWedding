@@ -1,308 +1,184 @@
-/*  
-    font-family for headings is Times New Roman; for maintext is Quicksand; for wedding date is Dancing Script by Google
-    Text color: rgb(4, 29, 51); Background color: #faeeef; Our Story feature box: no background color
-    Sections (The day, travel, Q&A, photos, RSVP) background color: rgb(4, 29, 51)
-*/
-/*
-    Used to remove any default styling and set to a "blank" canvas.
-    Note: box-sizing: border-box; ensures all elements include padding and border in their width and height calculations
-*/
+:root {
+    --primary: #041d33;
+    --secondary: #faeeef;
+    --accent: #d4d9a1;
+    --white: #ffffff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
 }
 
-/*body and header is selected because the display character only impacts direct children*/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Quicksand, Geneva, Tahoma, sans-serif;
-    background-color: #faeeef;
-    color: rgb(4, 29, 51);
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--secondary);
+    color: var(--primary);
+    line-height: 1.6;
 }
 
-h1,
-h2 {
-    font-family: 'Times New Roman', Times, serif;
-}
-
-h1 {
-    text-align: center;
-    font-size: 4rem;
-    margin-top: 1.5%;
-    padding: 3%;
-}
-
-#date {
-    text-align: center;
-    font-family: 'Dancing Script';
-    padding-bottom: 2%;
-}
-
-nav {
-    /*styling as a flexbox for nav links */
+/* Hero Section */
+.hero-section {
+    height: 80vh;
+    background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)), 
+        url('../images/background.jpeg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 10vw, 6rem);
+}
+
+.hero-overlay h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Sticky Nav */
+nav {
+    display: flex;
+    justify-content: center;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+nav.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .nav_link {
-    text-align: center;
-    padding: 2vh;
     text-decoration: none;
-}
-
-.nav_link:hover {
-    /*background-color: ;
-    color: ;*/
-    transition: background-color 0.3s ease;
-}
-
-@keyframes background-color {
-    to {
-        background-color: var(--bg);
-    }
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-}
-
-h1 {
-    font-size: 6vw;
-    font-weight: bold;
-    opacity: 0;
-    animation: slideIn .1s linear;
-}
-
-.hero {
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    animation: background-color .2s linear;
-
-    &-1 {
-        --bg: #ffcb00;
-
-        h1 {
-            transform: translateX(-100%);
-        }
-    }
-}
-
-.progress {
-    height: 3px;
-    width: 0%;
-    background-color: #1A73E8;
-    position: fixed;
-    left: 0;
-    top: 0;
-    animation: progress 1s linear;
-
-    @keyframes progress {
-        to {
-            width: 100%;
-        }
-    }
-}
-
-:root {
-    --delay: 0;
-
-    .animate {
-        animation-play-state: paused;
-        animation-delay: calc((var(--scroll) - var(--delay)) * -1s);
-        animation-iteration-count: 1;
-        animation-fill-mode: both;
-    }
-}
-
-/*This is being used to center the landing section image and seperately the OUR STORY section*/
-/*.wrap 
-{
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 20px 110px;
-    background-color: rgb(4, 29, 51);
-    color: #faeeef;
-}
-.wrap.nav1
-{
-    background-color: rgb(12, 44, 72);
-}*/
-#main_img {
-    text-align: center;
-    width: 35%;
-}
-
-.mySlides {
-    display: flex
-}
-
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
-/* Slideshow container */
-.slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 10px;
-    margin-top: -22px;
-    color: rgb(4, 29, 51);
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 3px;
-    user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-    background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-
-    to {
-        opacity: 1
-    }
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-
-    .prev,
-    .next,
-    .text {
-        font-size: 11px
-    }
-}
-
-.story {
-    padding: 1%;
-    margin: 1%;
-}
-
-h2 {
-    font-size: 2.5rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-p {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-
-    h1 {
-        font-size: 3.8rem;
-    }
-
-    h2 {
-        font-size: 2.3rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-    }
-
-}
-
-.main_text_header {
-    padding: 15px 0;
-}
-
-.spacer.clear {
-    clear: both;
-    height: 20px;
-    background-color: transparent;
-}
-
-.main_text {
-    padding: 40px;
-    color: #d4d9a1;
-    background-color: rgb(4, 29, 51);
-}
-
-h3 {
-    padding: 15px 0;
-}
-
-footer {
-    padding: 10px;
-}
-
-/*#copyright used because p takes priority over footer elements*/
-footer,
-#copyright {
-    text-align: center;
-    color: #d4d9a1;
-    background-color: rgb(4, 29, 51);
+    color: var(--primary);
+    margin: 0 15px;
+    font-weight: 700;
     font-size: 0.9rem;
 }
 
-.footer_link {
+#countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15); /* Subtle glass effect */
+    padding: 20px 40px;
+    border-radius: 50px; /* Rounded pill shape */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+}
+
+.countdown-number {
+    font-size: 2.5rem; /* Larger for emphasis */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* Layout Containers */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* Cards */
+.info-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.info-card.dark {
+    background: var(--primary);
+    color: var(--accent);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySlides img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
     text-decoration: none;
+    border-radius: 50px;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.text-center { text-align: center; }
+
+footer {
+    background: var(--primary);
+    color: var(--accent);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav { flex-wrap: wrap; }
+    .nav_link { margin: 5px; font-size: 0.7rem; }
 }
