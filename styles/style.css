@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
 :root {
     --primary: #041d33;
     --secondary: #faeeef;
     --accent: #d4d9a1;
     --white: #ffffff;
+    --grey: #7da2c2;
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Cormorant Garamond", "Playfair Display", serif;
 }
 
 * {
@@ -16,50 +23,81 @@ html {
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 1.6;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-serif);
+        font-style: italic;
+    }
+
+    h1,
+    h2 {
+        font-weight: 350;
+    }
+
+    h3,
+    h4 {
+        font-weight: 600;
+    }
 }
 
 /* Hero Section */
 .hero-section {
     height: 80vh;
-    background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)), 
+    background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)),
         url('../images/background.jpeg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--secondary);
     text-align: center;
 }
 
 .hero-overlay h1 {
-    font-family: 'Dancing Script', cursive;
     font-size: clamp(3rem, 10vw, 6rem);
 }
 
 .hero-overlay h2 {
-    font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     letter-spacing: 3px;
-    text-transform: uppercase;
 }
 
 /* Sticky Nav */
 nav {
     display: flex;
     justify-content: center;
-    background: var(--white);
+    background: var(--grey);
     padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: all 0.4s ease-in-out;
+    top: -100px;
+    width: 100%;
 }
 
 nav.sticky {
     position: fixed;
     top: 0;
     width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 .nav_link {
@@ -80,16 +118,19 @@ nav.sticky {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 255, 255, 0.15); /* Subtle glass effect */
+    background: rgba(255, 255, 255, 0.15);
+    /* Subtle glass effect */
     padding: 20px 40px;
-    border-radius: 50px; /* Rounded pill shape */
+    border-radius: 20px;
+    /* Rounded rectangle shape */
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     color: #ffffff;
 }
 
 .countdown-number {
-    font-size: 2.5rem; /* Larger for emphasis */
+    font-size: 2.5rem;
+    /* Larger for emphasis */
     font-weight: 700;
     line-height: 1;
 }
@@ -103,7 +144,7 @@ nav.sticky {
 
 /* Layout Containers */
 .container {
-    max-width: 1100px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -114,7 +155,6 @@ nav.sticky {
 
 .section-title {
     text-align: center;
-    font-family: 'Dancing Script', cursive;
     font-size: 3rem;
     margin-bottom: 2rem;
 }
@@ -125,7 +165,7 @@ nav.sticky {
     padding: 3rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .info-card.dark {
@@ -152,6 +192,52 @@ nav.sticky {
     border-radius: 8px;
 }
 
+/* Q&A Accordion Styles */
+.qa-item {
+    border-bottom: 1px solid rgba(212, 217, 161, 0.3);
+    /* Uses your --accent color */
+    margin-bottom: 0.5rem;
+}
+
+.qa-question {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+
+.qa-question:after {
+    content: '+';
+    font-size: 1.2rem;
+}
+
+.qa-question.active:after {
+    content: '-';
+}
+
+.qa-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.qa-content p {
+    padding-bottom: 1.5rem;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+}
+
 /* Button Styling */
 .btn {
     display: inline-block;
@@ -168,7 +254,9 @@ nav.sticky {
     transform: scale(1.05);
 }
 
-.text-center { text-align: center; }
+.text-center {
+    text-align: center;
+}
 
 footer {
     background: var(--primary);
@@ -179,6 +267,12 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    nav { flex-wrap: wrap; }
-    .nav_link { margin: 5px; font-size: 0.7rem; }
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .nav_link {
+        margin: 5px;
+        font-size: 0.7rem;
+    }
 }

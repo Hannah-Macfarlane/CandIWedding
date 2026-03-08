@@ -7,9 +7,6 @@
     <title>Caroline & Iain | Wedding</title>
     <link href="images/favicon.png" rel="icon" type="image/png">
     <link href="styles/style.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -17,8 +14,7 @@
     <header class="hero-section">
         <div class="hero-overlay">
             <h1>Caroline & Iain</h1>
-            <h2>Invite you to join them to celebrate their marriage</h2>
-            <h2 id="date">Saturday 16 May 2026</h2>
+            <h2 id="date">Saturday, 16 May 2026</h2>
             <div id="countdown"></div>
         </div>
     </header>
@@ -86,9 +82,12 @@
                 <div class="card">
                     <h3>Reception</h3>
                     <address>Sids Restaurant & Bar<br>The Esplanade<br>Penarth, CF64 3AU</address>
-                    <p>The reception venue is a short 15 minute walk from the church, located on the beautiful Penarth Esplanade. The walk involves a steep descent down to the sea
-                front. There are a limited number of parking spaces right outside of the restaurant including disabled spaces all with a 2 hour time limit. On-street parking is available on Marine Parade and a long flight
-                of steps down to the front near the restaurant.</p>
+                    <p>The reception venue is a short 15 minute walk from the church, located on the beautiful Penarth
+                        Esplanade. The walk involves a steep descent down to the sea
+                        front. There are a limited number of parking spaces right outside of the restaurant including
+                        disabled spaces all with a 2 hour time limit. On-street parking is available on Marine Parade
+                        and a long flight
+                        of steps down to the front near the restaurant.</p>
                 </div>
             </div>
         </section>
@@ -96,38 +95,57 @@
         <section id="nav4" class="info-card dark">
             <h2 class="section-title">Q & A</h2>
             <div class="qa-item">
-                <h3>When do I need to RSVP?</h3>
-                <p>Please let us know by April 4th via the link below or get in touch.</p>
+                <button class="qa-question">When do I need to RSVP?</button>
+                <div class="qa-content">
+                    <p>Please let us know by April 4th via the link below or get in touch.</p>
+                </div>
             </div>
             <div class="qa-item">
-                <h3>Is there a dress code?</h3>
-                <p>No. Wear whatever you are most comfortable in!</p>
+                <button class="qa-question">Is there a dress code?</button>
+                <div class="qa-content">
+                    <p>No. Wear whatever you are most comfortable in!</p>
+                </div>
             </div>
             <div class="qa-item">
-                <h3>Is there a gift list?</h3>
-                <p>Your presence at our wedding is all we could wish for, and we truly do not expect any gifts. However, for those who feel they would like to give something, a John Lewis vouchers would be very much appreciated.</p>
+                <button class="qa-question">Is there a gift list?</button>
+                <div class="qa-content">
+                    <p>Your presence at our wedding is all we could wish for, and we truly do not expect any gifts.
+                        However,
+                        for those who feel they would like to give something, a John Lewis vouchers would be very much
+                        appreciated.</p>
+                </div>
             </div>
             <div class="qa-item">
-                <h3>When and what will we be eating?</h3>
-                <p>We hope to be sitting down to eat between 3.30pm and 4pm. We will send out a menu for you to choose from but please let us know if you have any food allergies or dietary requirements.</p>
+                <button class="qa-question">When and what will we be eating?</button>
+                <div class="qa-content">
+                    <p>We hope to be sitting down to eat between 3.30pm and 4pm. We will send out a menu for you to
+                        choose
+                        from but please let us know if you have any food allergies or dietary requirements.</p>
+                </div>
             </div>
             <div class="qa-item">
-                <h3>Can I take photos?</h3>
-                <p>Yes, of course you can take photos, and we hope you will send us your best ones.
-                However, out of respect, please don’t take photos in the church during the service. After the day we would love it if you would share your favourite photos with us.</p>
+                <button class="qa-question">Can I take photos?</button>
+                <div class="qa-content">
+                    <p>Yes, of course you can take photos, and we hope you will send us your best ones.
+                        However, out of respect, please don’t take photos in the church during the service. After the
+                        day we
+                        would love it if you would share your favourite photos with us.</p>
+                </div>
             </div>
             <div class="qa-item">
-                <h3>What about access for people of limited mobility?</h3>
-                <p>The roads and paths around the church are level and flat and there are no steps.
-                However, at the restaurant, we suggest that you are dropped off on the road outside.
-                There is ramp access into the restaurant.</p>
+                <button class="qa-question">What about access for people of limited mobility?</button>
+                <div class="qa-content">
+                    <p>The roads and paths around the church are level and flat and there are no steps.
+                        However, at the restaurant, we suggest that you are dropped off on the road outside.
+                        There is ramp access into the restaurant.</p>
+                </div>
             </div>
         </section>
 
         <section id="nav6" class="content-section text-center">
             <h2 class="section-title">RSVP</h2>
             <p>We can't wait to celebrate with you!</p>
-            <a href="mailto:yourweddingemail@example.com" class="btn">Confirm Attendance</a>
+            <a href="mailto:candiwedding2026@outlook.com" class="btn">Confirm Attendance</a>
             <p><small>Kindly reply by April 4th, 2026</small></p>
         </section>
 
@@ -163,7 +181,7 @@
 
         // Run once on page load
         displayDaysOnly();
-        
+
         // Simple Slide Script
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -185,6 +203,23 @@
                 nav.classList.remove("sticky");
             }
         };
+
+        // Accordion Logic
+        const questions = document.querySelectorAll(".qa-question");
+
+        questions.forEach(question => {
+            question.addEventListener("click", function () {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    // This allows the browser to calculate the exact height needed
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
     </script>
 </body>
 
