@@ -41,14 +41,28 @@ body {
 
 /* Hero Section */
 .hero-section {
-    height: 80vh;
+    height: 85vh;
     background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)),
         url('../images/background.jpeg') center/cover no-repeat;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     color: var(--secondary);
     text-align: center;
+    padding: 4rem 0;
+}
+
+.hero-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure overlay spans the full height of the hero */
+    width: 100%;
+}
+
+.hero-bottom-group {
+    margin-bottom: 2rem;
 }
 
 .hero-overlay h1 {
