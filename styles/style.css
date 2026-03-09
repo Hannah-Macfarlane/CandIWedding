@@ -7,7 +7,6 @@
     --accent: #d4d9a1;
     --white: #ffffff;
     --grey: #7da2c2;
-
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-serif: "Cormorant Garamond", "Playfair Display", serif;
 }
@@ -36,15 +35,8 @@ body {
         font-style: italic;
     }
 
-    h1,
-    h2 {
-        font-weight: 350;
-    }
-
-    h3,
-    h4 {
-        font-weight: 600;
-    }
+    h1, h2 { font-weight: 350; }
+    h3, h4 { font-weight: 600; }
 }
 
 /* Hero Section */
@@ -68,7 +60,7 @@ body {
     letter-spacing: 3px;
 }
 
-/* Sticky Nav */
+/* Navigation */
 nav {
     display: flex;
     justify-content: center;
@@ -125,13 +117,13 @@ nav.sticky {
     /* Rounded rectangle shape */
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    color: #ffffff;
+    color: var(--secondary)
 }
 
 .countdown-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     /* Larger for emphasis */
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
 }
 

@@ -121,8 +121,9 @@
                         </a>
                     </address>
                     <p>The reception venue is a short 15 minute walk from the church but does involve a steep descent
-                        down to the sea front. There is limited parking right outside including disabled spaces with a 
-                        2 hour limit. On-street parking is also available on Marine Parade and also includes a  long flight 
+                        down to the sea front. There is limited parking right outside including disabled spaces with a
+                        2 hour limit. On-street parking is also available on Marine Parade and also includes a long
+                        flight
                         of steps down to the reception.</p>
                 </div>
             </div>
@@ -254,74 +255,42 @@
     </footer>
 
     <script>
-        // --- Countdown Logic ---
+        // Countdown
         const weddingDate = new Date("May 16, 2026").getTime();
-
-        function displayDaysOnly() {
+        function updateCountdown() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
             const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
-            const countdownElement = document.getElementById("countdown");
-
-            if (distance < 0) {
-                countdownElement.innerHTML = "<h3>The Celebration has Begun!</h3>";
-            } else {
-                countdownElement.innerHTML = `
-                <div class="countdown-item">
-                    <span class="countdown-number">${days}</span>
-                    <span class="countdown-label">Days to go</span>
-                </div>`;
-            }
+            const el = document.getElementById("countdown");
+            el.innerHTML = distance < 0 ? "<h3>The Celebration has Begun!</h3>" :
+                `<div class="countdown-item"><span class="countdown-number">${days}</span><span class="countdown-label">Days to go</span></div>`;
         }
-        displayDaysOnly();
+        updateCountdown();
 
-        // --- Slideshow Logic ---
+        // Slideshow
         let slideIndex = 1;
         showSlides(slideIndex);
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
+        function currentSlide(n) { showSlides(slideIndex = n); }
         function showSlides(n) {
-            let i;
             const slides = document.getElementsByClassName("mySlides");
             const dots = document.getElementsByClassName("dot");
-
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active-dot", "");
-            }
-
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active-dot");
             slides[slideIndex - 1].style.display = "block";
-            if (dots.length > 0) {
-                dots[slideIndex - 1].className += " active-dot";
-            }
+            if (dots.length > 0) dots[slideIndex - 1].classList.add("active-dot");
         }
+        setInterval(() => { slideIndex++; showSlides(slideIndex); }, 5000);
 
-        setInterval(() => {
-            slideIndex++;
-            showSlides(slideIndex);
-        }, 4000);
-
-        // --- Navigation & Accordion Logic ---
-        window.onscroll = function () {
-            let nav = document.getElementById("navbar");
-            if (window.pageYOffset > window.innerHeight * 0.7) {
-                nav.classList.add("sticky");
-            } else {
-                nav.classList.remove("sticky");
-            }
+        // Nav & Accordion
+        window.onscroll = () => {
+            const nav = document.getElementById("navbar");
+            window.pageYOffset > window.innerHeight * 0.7 ? nav.classList.add("sticky") : nav.classList.remove("sticky");
         };
 
-        const questions = document.querySelectorAll(".qa-question");
-        questions.forEach(question => {
-            question.addEventListener("click", function () {
+        document.querySelectorAll(".qa-question").forEach(q => {
+            q.addEventListener("click", function () {
                 this.classList.toggle("active");
                 const content = this.nextElementSibling;
                 content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
