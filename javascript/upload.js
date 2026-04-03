@@ -1,0 +1,87 @@
+const uploadBtn = document.getElementById("upload-btn");
+const gallery   = document.getElementById("gallery");
+const status    = document.getElementById("status");
+
+uploadBtn.addEventListener("click", async () => {
+  status.textContent = "Preparing upload...";
+
+  try {
+    // Step 1: Ask our serverless function for a secure signature
+    const res = await fetch("/.netlify/functions/sign-upload", {
+      method: "POST",
+    });
+
+    if (!res.ok) throw new Error("Could not get upload signature");
+
+    const { signature, timestamp, cloudName, apiKey } = await res.json();
+
+    status.textContent = "";
+
+    // Step 2: Open the Cloudinary widget using the secure signature
+    const widget = cloudinary.createUploadWidget(
+      {
+        cloudName:    cloudName,
+        apiKey:       apiKey,
+        uploadSignature: signature,
+        uploadSignatureTimestamp: timestamp,
+
+        // Upload settings
+        folder:       "wedding-photos",
+        tags:         ["guest-upload"],
+        sources:      ["local", "camera"],   // local files or phone camera
+        multiple:     true,                  // allow multiple photos at once
+        maxFiles:     20,                    // cap per session
+        maxFileSize:  20000000,              // 20MB max per photo
+        clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
+
+        // Widget appearance
+        styles: {
+          palette: {
+            window:      "#FFFFFF",
+            windowBorder:"#8b6f5e",
+            tabIcon:     "#8b6f5e",
+            menuIcons:   "#8b6f5e",
+            textDark:    "#3a3a3a",
+            textLight:   "#FFFFFF",
+            link:        "#8b6f5e",
+            action:      "#8b6f5e",
+            inactiveTabIcon: "#aaa",
+            error:       "#F44235",
+            inProgress:  "#8b6f5e",
+            complete:    "#20B832",
+            sourceBg:    "#fdf8f4",
+          },
+        },
+      },
+
+      // Step 3: Handle the result
+      (error, result) => {
+        if (error) {
+          console.error("Upload error:", error);
+          status.textContent = "Something went wrong. Please try again.";
+          return;
+        }
+
+        if (result.event === "success") {
+          // Show the uploaded photo in the on-page gallery
+          const img = document.createElement("img");
+          img.src = result.info.secure_url;
+          img.alt = "Guest photo";
+          gallery.prepend(img);
+          status.textContent = "Photo uploaded successfully! 🎉";
+        }
+
+        if (result.event === "queues-end") {
+          status.textContent = "All photos uploaded! Thank you 💛";
+          widget.close();
+        }
+      }
+    );
+
+    widget.open();
+
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Could not connect. Please try again.";
+  }
+});
