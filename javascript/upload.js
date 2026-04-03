@@ -1,87 +1,91 @@
-const uploadBtn = document.getElementById("upload-btn");
-const gallery = document.getElementById("gallery");
-const status = document.getElementById("status");
+document.addEventListener("DOMContentLoaded", () => {
 
-uploadBtn.addEventListener("click", async () => {
-  status.textContent = "Preparing upload...";
+  const uploadBtn = document.getElementById("upload-btn");
+  const gallery = document.getElementById("gallery");
+  const status = document.getElementById("status");
 
-  try {
-    // Step 1: Ask our serverless function for a secure signature
-    const res = await fetch("/.netlify/functions/sign-upload", {
-      method: "POST",
-    });
+  uploadBtn.addEventListener("click", async () => {
+    status.textContent = "Preparing upload...";
 
-    if (!res.ok) throw new Error("Could not get upload signature");
+    try {
+      // Step 1: Ask our serverless function for a secure signature
+      const res = await fetch("/.netlify/functions/sign-upload", {
+        method: "POST",
+      });
 
-    const { signature, timestamp, cloudName, apiKey } = await res.json();
+      if (!res.ok) throw new Error("Could not get upload signature");
 
-    status.textContent = "";
+      const { signature, timestamp, cloudName, apiKey } = await res.json();
 
-    // Step 2: Open the Cloudinary widget using the secure signature
-    const widget = cloudinary.createUploadWidget(
-      {
-        cloudName: cloudName,
-        apiKey: apiKey,
-        uploadSignature: signature,
-        uploadSignatureTimestamp: timestamp,
+      status.textContent = "";
 
-        // Upload settings
-        folder: "wedding-photos",
-        tags: ["guest-upload"],
-        sources: ["local", "camera"],   // local files or phone camera
-        multiple: true,                  // allow multiple photos at once
-        maxFiles: 20,                    // cap per session
-        maxFileSize: 20000000,              // 20MB max per photo
-        clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
+      // Step 2: Open the Cloudinary widget using the secure signature
+      const widget = cloudinary.createUploadWidget(
+        {
+          cloudName: cloudName,
+          apiKey: apiKey,
+          uploadSignature: signature,
+          uploadSignatureTimestamp: timestamp,
 
-        // Widget appearance
-        styles: {
-          palette: {
-            window: "#FFFFFF",
-            windowBorder: "#041d33",
-            tabIcon: "#041d33",
-            menuIcons: "#7da2c2",
-            textDark: "#041d33",
-            textLight: "#FFFFFF",
-            link: "#7da2c2",
-            action: "#041d33",
-            inactiveTabIcon: "#aaa",
-            error: "#F44235",
-            inProgress: "#7da2c2",
-            complete: "#20B832",
-            sourceBg: "#faeeef",
+          // Upload settings
+          folder: "wedding-photos",
+          tags: ["guest-upload"],
+          sources: ["local", "camera"],   // local files or phone camera
+          multiple: true,                  // allow multiple photos at once
+          maxFiles: 20,                    // cap per session
+          maxFileSize: 20000000,              // 20MB max per photo
+          clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
+
+          // Widget appearance
+          styles: {
+            palette: {
+              window: "#FFFFFF",
+              windowBorder: "#041d33",
+              tabIcon: "#041d33",
+              menuIcons: "#7da2c2",
+              textDark: "#041d33",
+              textLight: "#FFFFFF",
+              link: "#7da2c2",
+              action: "#041d33",
+              inactiveTabIcon: "#aaa",
+              error: "#F44235",
+              inProgress: "#7da2c2",
+              complete: "#20B832",
+              sourceBg: "#faeeef",
+            },
           },
         },
-      },
 
-      // Step 3: Handle the result
-      (error, result) => {
-        if (error) {
-          console.error("Upload error:", error);
-          status.textContent = "Something went wrong. Please try again.";
-          return;
+        // Step 3: Handle the result
+        (error, result) => {
+          if (error) {
+            console.error("Upload error:", error);
+            status.textContent = "Something went wrong. Please try again.";
+            return;
+          }
+
+          if (result.event === "success") {
+            // Show the uploaded photo in the on-page gallery
+            const img = document.createElement("img");
+            img.src = result.info.secure_url;
+            img.alt = "Guest photo";
+            gallery.prepend(img);
+            status.textContent = "Photo uploaded successfully! 🎉";
+          }
+
+          if (result.event === "queues-end") {
+            status.textContent = "All photos uploaded! Thank you 💛";
+            widget.close();
+          }
         }
+      );
 
-        if (result.event === "success") {
-          // Show the uploaded photo in the on-page gallery
-          const img = document.createElement("img");
-          img.src = result.info.secure_url;
-          img.alt = "Guest photo";
-          gallery.prepend(img);
-          status.textContent = "Photo uploaded successfully! 🎉";
-        }
+      widget.open();
 
-        if (result.event === "queues-end") {
-          status.textContent = "All photos uploaded! Thank you 💛";
-          widget.close();
-        }
-      }
-    );
+    } catch (err) {
+      console.error(err);
+      status.textContent = "Could not connect. Please try again.";
+    }
+  });
 
-    widget.open();
-
-  } catch (err) {
-    console.error(err);
-    status.textContent = "Could not connect. Please try again.";
-  }
-});
+}); // End of DOMContentLoaded
