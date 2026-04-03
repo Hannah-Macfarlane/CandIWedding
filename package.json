@@ -1,0 +1,24 @@
+{
+  "name": "vscode102",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hannah-Macfarlane/CandIWedding.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hannah-Macfarlane/CandIWedding/issues"
+  },
+  "homepage": "https://github.com/Hannah-Macfarlane/CandIWedding#readme",
+  "dependencies": {
+    "cloudinary": "^2.9.0"
+  }
+}
