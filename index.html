@@ -62,7 +62,8 @@
                 <div class="story-text">
                     <div class="story-text-inner">
                         <p>Iain was an hour and a half late for our first date — he started as he meant to go on — but
-                            Caroline was patience personified. The conversation flowed straight away, and we ended up staying
+                            Caroline was patience personified. The conversation flowed straight away, and we ended up
+                            staying
                             together long into the evening.</p>
                         <p>After three and a half happy years together, we really can’t imagine being apart. We love the
                             adventure of building a home together and making each other happy.
@@ -235,7 +236,8 @@
             <div class="qa-item">
                 <button class="qa-question">Can I throw confetti?</button>
                 <div class="qa-content">
-                    <p>Yes, you are welcome to bring confetti to throw after the ceremony. We do ask that it's fully biodegradable and preferably petals.</p>
+                    <p>Yes, you are welcome to bring confetti to throw after the ceremony. We do ask that it's fully
+                        biodegradable and preferably petals.</p>
                 </div>
             </div>
             <div class="qa-item">
@@ -258,7 +260,7 @@
         <section id="nav7" class="content-section text-center">
             <h2 class="section-title">Share Your Photos</h2>
             <p>We would love to see your photos from the day! Please share your favourite moments with us.</p>
-            <button class="btn">Upload Your Photos</button>
+            <button class="btn" id="upload-btn">Upload Your Photos</button>
             <div id="status"></div>
             <div id="gallery"></div>
         </section>
@@ -268,66 +270,9 @@
         <p>&copy; 2025 Hannah Macfarlane | Icons by <a href="https://icons8.com">Icons8</a></p>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="javascript/upload.js"></script>
+    <script src="javascript/script.js"></script>
     <script src="javascript/upload.js"></script>
-
-    <script>
-        // Countdown
-        const weddingDate = new Date("May 16, 2026").getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
-            const el = document.getElementById("countdown");
-            el.innerHTML = distance < 0 ? "<h3>The Celebration has Begun!</h3>" :
-                `<div class="countdown-item"><span class="countdown-number">${days}</span><span class="countdown-label">Days to go</span></div>`;
-        }
-        updateCountdown();
-
-        // Slideshow
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function currentSlide(n) { showSlides(slideIndex = n); }
-
-        function showSlides(n) {
-            const slides = document.getElementsByClassName("mySlides");
-            const dots = document.getElementsByClassName("dot");
-
-            if (n > slides.length) slideIndex = 1;
-            if (n < 1) slideIndex = slides.length;
-
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active-dot");
-            }
-
-            slides[slideIndex - 1].style.display = "block";
-            if (dots.length > 0) {
-                dots[slideIndex - 1].classList.add("active-dot");
-            }
-        }
-
-        setInterval(() => {
-            slideIndex++;
-            showSlides(slideIndex);
-        }, 5000);
-
-        // Nav & Accordion
-        window.onscroll = () => {
-            const nav = document.getElementById("navbar");
-            window.pageYOffset > window.innerHeight * 0.7 ? nav.classList.add("sticky") : nav.classList.remove("sticky");
-        };
-
-        document.querySelectorAll(".qa-question").forEach(q => {
-            q.addEventListener("click", function () {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-            });
-        });
-    </script>
 
 </body>
 

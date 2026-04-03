@@ -62,3 +62,5 @@ document.querySelectorAll(".qa-question").forEach(q => {
         }
     });
 });
+
+window.currentSlide = currentSlide;
