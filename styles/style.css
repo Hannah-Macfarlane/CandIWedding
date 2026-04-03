@@ -1,3 +1,7 @@
+/* ============================================
+   1. IMPORTS & VARIABLES
+   ============================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
 :root {
@@ -10,6 +14,10 @@
     --font-serif: "Cormorant Garamond", "Playfair Display", serif;
 }
 
+/* ============================================
+   2. RESET & BASE STYLES
+   ============================================ */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,60 +28,49 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ============================================
+   3. TYPOGRAPHY
+   ============================================ */
+
 body {
     font-family: var(--font-sans);
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 1.6;
-
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-family: var(--font-serif);
-        font-style: italic;
-    }
-
-    h1, h2 { font-weight: 350; }
-    h3, h4 { font-weight: 600; }
 }
 
-/* Hero Section */
-.hero-section {
-    height: 85vh;
-    background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)),
-        url('../images/background.jpeg') center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--secondary);
-    text-align: center;
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+h1, h2 { font-weight: 350; }
+h3, h4 { font-weight: 600; }
+
+/* ============================================
+   4. LAYOUT & CONTAINERS
+   ============================================ */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-section {
     padding: 4rem 0;
 }
 
-.hero-overlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Ensure overlay spans the full height of the hero */
-    width: 100%;
-}
-
-.hero-bottom-group {
+.section-title {
+    text-align: center;
+    font-size: 3rem;
     margin-bottom: 2rem;
 }
 
-.hero-overlay h1 {
-    font-size: clamp(3rem, 10vw, 6rem);
-}
+/* ============================================
+   5. NAVIGATION
+   ============================================ */
 
-.hero-overlay h2 {
-    font-weight: 300;
-    letter-spacing: 3px;
-}
-
-/* Navigation */
 nav {
     display: flex;
     justify-content: center;
@@ -147,125 +144,42 @@ nav.sticky {
     margin-top: 5px;
 }
 
-/* Layout Containers */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem;
-}
+/* ============================================
+   6. HERO SECTION
+   ============================================ */
 
-.content-section {
+.hero-section {
+    height: 85vh;
+    background: linear-gradient(rgba(4, 29, 51, 0.4), rgba(4, 29, 51, 0.4)),
+        url('../images/background.jpeg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--secondary);
+    text-align: center;
     padding: 4rem 0;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 3rem;
+.hero-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure overlay spans the full height of the hero */
+    width: 100%;
+}
+
+.hero-bottom-group {
     margin-bottom: 2rem;
 }
 
-/* Improved Grid with more breathing room */
-.story-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Slightly larger area for the image */
-    gap: 5rem; /* Increased gap for a cleaner look */
-    align-items: center; /* Vertically centers the text against the image */
-    max-width: 1100px;
-    margin: 0 auto;
+.hero-overlay h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
 }
 
-/* Text Container Adjustments */
-.story-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
-.story-text-inner {
-    border-left: 2px solid var(--accent); /* Subtle decorative line */
-    padding-left: 2rem;
-}
-
-.story-text p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-    text-align: justify;
-}
-
-/* A "Lead" paragraph style for impact */
-.story-lead {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.6rem !important;
-    color: var(--primary);
-    margin-bottom: 1rem !important;
-    line-height: 1.2 !important;
-}
-
-/* Responsive fix for mobile */
-@media (max-width: 900px) {
-    .story-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
-    
-    .story-text-inner {
-        border-left: none;
-        border-top: 2px solid var(--accent);
-        padding-left: 0;
-        padding-top: 2rem;
-        text-align: center;
-    }
-}
-
-/* Dots Navigation */
-.dot-container {
-    text-align: center;
-    padding: 15px 0;
-}
-
-.dot {
-    cursor: pointer;
-    height: 12px;
-    width: 12px;
-    margin: 0 5px;
-    background-color: var(--grey);
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.active-dot, .dot:hover {
-    background-color: var(--primary);
-    transform: scale(1.2);
-}
-
-/* Responsive adjustment for mobile */
-@media (max-width: 768px) {
-    .story-grid {
-        grid-template-columns: 1fr; /* Stack on small screens */
-    }
-    
-    .slideshow-container {
-        order: -1; /* Keep images on top when stacked */
-        max-width: 100%;
-    }
-}
-
-/* Slideshow */
-.slideshow-container {
-    position: relative;
-    max-width: 500px;
-    margin: auto;
-}
-
-.mySlides img {
-    width: 100%;
-    border-radius: 8px;
+.hero-overlay h2 {
+    font-weight: 300;
+    letter-spacing: 3px;
 }
 
 /* Dark Summary Section Styling */
@@ -277,65 +191,9 @@ nav.sticky {
     margin-bottom: 2rem;
 }
 
-.dark-summary .section-title {
-    color: var(--accent);
-    margin-bottom: 3rem;
-}
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two distinct side-by-side parts */
-    gap: 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.summary-item {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.summary-item h3 {
-    color: var(--accent);
-    font-size: 2.2rem; /* Larger heading */
-    margin-bottom: 0.5rem;
-}
-
-.summary{
-    font-size: 1.2rem;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.summary-description {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--grey);
-}
-
-/* Vertical divider for desktop */
-.summary-item:first-child {
-    border-right: 1px solid rgba(212, 217, 161, 0.3);
-    padding-right: 2rem;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .summary-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .summary-item:first-child {
-        border-right: none;
-        border-bottom: 1px solid rgba(212, 217, 161, 0.3);
-        padding-right: 0;
-        padding-bottom: 3rem;
-    }
-}
+/* ============================================
+   7. COMPONENTS (buttons, cards, etc.)
+   ============================================ */
 
 /* Cards */
 .info-card {
@@ -392,7 +250,147 @@ nav.sticky {
     color: var(--white);
 }
 
-/* Menu Specific Styling */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   8. SECTIONS (story, menu, Q&A, etc.)
+   ============================================ */
+
+/* Dots Navigation */
+.dot-container {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: var(--grey);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.active-dot, .dot:hover {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySlides img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.dark-summary .section-title {
+    color: var(--accent);
+    margin-bottom: 3rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two distinct side-by-side parts */
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.summary-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.summary-item h3 {
+    color: var(--accent);
+    font-size: 2.2rem; /* Larger heading */
+    margin-bottom: 0.5rem;
+}
+
+.summary{
+    font-size: 1.2rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.summary-description {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--grey);
+}
+
+/* Vertical divider for desktop */
+.summary-item:first-child {
+    border-right: 1px solid rgba(212, 217, 161, 0.3);
+    padding-right: 2rem;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Slightly larger area for the image */
+    gap: 5rem; /* Increased gap for a cleaner look */
+    align-items: center; /* Vertically centers the text against the image */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.story-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.story-text-inner {
+    border-left: 2px solid var(--accent); /* Subtle decorative line */
+    padding-left: 2rem;
+}
+
+.story-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    text-align: justify;
+}
+
+.story-lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.6rem !important;
+    color: var(--primary);
+    margin-bottom: 1rem !important;
+    line-height: 1.2 !important;
+}
+
+.menu-intro {
+    margin-bottom: 2rem;
+}
+
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -436,7 +434,6 @@ nav.sticky {
     text-align: center;
 }
 
-/* Q&A Accordion Styles */
 .qa-item {
     border-bottom: 1px solid rgba(212, 217, 161, 0.3);
     /* Uses your --accent color */
@@ -481,43 +478,53 @@ nav.sticky {
     font-family: 'Inter', sans-serif;
 }
 
-/* Button Styling */
-.btn {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 1rem;
-    transition: transform 0.3s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
 .text-center {
     text-align: center;
 }
 
-footer {
-    background: var(--primary);
-    color: var(--accent);
-    text-align: center;
-    padding: 2rem;
+/* ============================================
+   9. PHOTO UPLOAD
+   ============================================ */
+
+.password-prompt {
+    margin: 1.5rem 0 0.5rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap;
-    }
+.password-input-wrapper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--primary);
+    border-radius: 50px;
+    background: var(--white);
+    margin-right: 0.5rem;
+}
 
-    .nav_link {
-        margin: 5px;
-        font-size: 0.7rem;
-    }
+.password-input-wrapper input {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+    color: var(--primary);
+    width: 200px;
+}
+
+.password-input-wrapper button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-right: 1rem;
+    color: var(--grey);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#password-error {
+    color: red;
+    margin-top: 0.75rem;
+    font-style: italic;
 }
 
 #gallery {
@@ -540,4 +547,67 @@ footer {
     margin-top: 1rem;
     color: var(--grey);
     font-style: italic;
+}
+
+/* ============================================
+   10. FOOTER
+   ============================================ */
+
+footer {
+    background: var(--primary);
+    color: var(--accent);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ============================================
+   11. RESPONSIVE / MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .slideshow-container {
+        order: -1;
+        max-width: 100%;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .summary-item:first-child {
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 217, 161, 0.3);
+        padding-right: 0;
+        padding-bottom: 3rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .nav_link {
+        margin: 5px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .story-text-inner {
+        border-left: none;
+        border-top: 2px solid var(--accent);
+        padding-left: 0;
+        padding-top: 2rem;
+        text-align: center;
+    }
 }

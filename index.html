@@ -63,13 +63,11 @@
                     <div class="story-text-inner">
                         <p>Iain was an hour and a half late for our first date — he started as he meant to go on — but
                             Caroline was patience personified. The conversation flowed straight away, and we ended up
-                            staying
-                            together long into the evening.</p>
+                            staying together long into the evening.</p>
                         <p>After three and a half happy years together, we really can’t imagine being apart. We love the
-                            adventure of building a home together and making each other happy.
+                            adventure of building a home together and making each other happy.</p>
                         <p> We’ve both had our fair share of heartache, and we’re simply thankful that we have found
-                            each other. We complete each other, and we’re excited to celebrate
-                            that with you, our favourite people.</p>
+                            each other. We complete each other, and we’re excited to celebrate that with you, our favourite people.</p>
                     </div>
                 </div>
             </div>
@@ -133,7 +131,7 @@
 
         <section id="nav4" class="info-card">
             <h2 class="section-title">The Menu</h2>
-            <p class="text-center" style="margin-bottom: 2rem;">Please take a look at our wedding breakfast options.
+            <p class="text-center menu-intro">Please take a look at our wedding breakfast options.
                 Please provide us with your party's order when you RSVP.</p>
 
             <div class="menu-grid">
@@ -263,19 +261,14 @@
 
             <!-- Password Gate -->
             <div id="password-gate">
-                <p style="margin: 1.5rem 0 0.5rem;">Please enter the guest password to upload photos:</p>
-                <input type="password" id="guest-password" placeholder="Enter password" style="
-                padding: 0.75rem 1.5rem;
-                border: 1px solid var(--primary);
-                border-radius: 50px;
-                font-size: 1rem;
-                outline: none;
-                margin-right: 0.5rem;
-                background: var(--white);
-                color: var(--primary);
-            " />
+                <p class="password-prompt">Please enter the guest password to upload photos:</p>
+                <div class="password-input-wrapper">
+                    <input type="password" id="guest-password" placeholder="Enter password" />
+                    <button id="toggle-password" type="button">Show</button>
+                </div>
+
                 <button class="btn" id="password-btn">Submit</button>
-                <p id="password-error" style="color: red; margin-top: 0.75rem; font-style: italic;"></p>
+                <p id="password-error"></p>
             </div>
 
             <!-- Upload Section (hidden until password is correct) -->

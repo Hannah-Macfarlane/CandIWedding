@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 // Countdown
 const weddingDate = new Date("May 16, 2026").getTime();
 function updateCountdown() {
@@ -64,3 +66,5 @@ document.querySelectorAll(".qa-question").forEach(q => {
 });
 
 window.currentSlide = currentSlide;
+
+});

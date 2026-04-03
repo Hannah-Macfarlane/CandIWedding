@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Password Gate
     const GUEST_PASSWORD = "penarth2026";
-    const passwordBtn   = document.getElementById("password-btn");
+    const passwordBtn = document.getElementById("password-btn");
     const passwordInput = document.getElementById("guest-password");
     const passwordError = document.getElementById("password-error");
-    const passwordGate  = document.getElementById("password-gate");
+    const passwordGate = document.getElementById("password-gate");
     const uploadSection = document.getElementById("upload-section");
 
     // Allow pressing Enter to submit password
@@ -13,11 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") passwordBtn.click();
     });
 
-    passwordBtn.addEventListener("click", () => { 
-        console.log("Entered:", JSON.stringify(passwordInput.value));
-        console.log("Expected:", JSON.stringify(GUEST_PASSWORD));
+    passwordBtn.addEventListener("click", () => {
         if (passwordInput.value === GUEST_PASSWORD) {
-            passwordGate.style.display  = "none";
+            passwordGate.style.display = "none";
             uploadSection.style.display = "block";
         } else {
             passwordError.textContent = "Incorrect password. Please try again.";
@@ -26,15 +24,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Toggle password visibility
+    const toggleBtn = document.getElementById("toggle-password");
+    toggleBtn.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleBtn.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            toggleBtn.textContent = "Show";
+        }
+    });
+
     const uploadBtn = document.getElementById("upload-btn");
-    const gallery   = document.getElementById("gallery");
-    const status    = document.getElementById("status");
+    const gallery = document.getElementById("gallery");
+    const status = document.getElementById("status");
 
     uploadBtn.addEventListener("click", async () => {
         status.textContent = "Preparing upload...";
 
         try {
-          // Step 1: Ask our serverless function for a secure signature
+            // Step 1: Ask our serverless function for a secure signature
             const res = await fetch("/.netlify/functions/sign-upload", {
                 method: "POST",
             });
@@ -48,36 +58,36 @@ document.addEventListener("DOMContentLoaded", () => {
             // Step 2: Open the Cloudinary widget using the secure signature
             const widget = cloudinary.createUploadWidget(
                 {
-                    cloudName:    cloudName,
-                    apiKey:       apiKey,
+                    cloudName: cloudName,
+                    apiKey: apiKey,
                     uploadSignature: signature,
                     uploadSignatureTimestamp: timestamp,
 
                     // Upload settings
-                    folder:       "wedding-photos",
-                    tags:         ["guest-upload"],
-                    sources:      ["local", "camera"],
-                    multiple:     true,
-                    maxFiles:     20,
-                    maxFileSize:  20000000,
+                    folder: "wedding-photos",
+                    tags: ["guest-upload"],
+                    sources: ["local", "camera"],
+                    multiple: true,
+                    maxFiles: 20,
+                    maxFileSize: 20000000,
                     clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
 
                     // Widget appearance
                     styles: {
                         palette: {
-                            window:         "#FFFFFF",
-                            windowBorder:   "#041d33",
-                            tabIcon:        "#041d33",
-                            menuIcons:      "#7da2c2",
-                            textDark:       "#041d33",
-                            textLight:      "#FFFFFF",
-                            link:           "#7da2c2",
-                            action:         "#041d33",
-                            inactiveTabIcon:"#aaa",
-                            error:          "#F44235",
-                            inProgress:     "#7da2c2",
-                            complete:       "#20B832",
-                            sourceBg:       "#faeeef",
+                            window: "#FFFFFF",
+                            windowBorder: "#041d33",
+                            tabIcon: "#041d33",
+                            menuIcons: "#7da2c2",
+                            textDark: "#041d33",
+                            textLight: "#FFFFFF",
+                            link: "#7da2c2",
+                            action: "#041d33",
+                            inactiveTabIcon: "#aaa",
+                            error: "#F44235",
+                            inProgress: "#7da2c2",
+                            complete: "#20B832",
+                            sourceBg: "#faeeef",
                         },
                     },
                 },
