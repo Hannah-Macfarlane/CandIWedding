@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // Password Gate
-    const GUEST_PASSWORD = "caroline2026"; // Change this to whatever you want
+    const GUEST_PASSWORD = "penarth2026";
     const passwordBtn   = document.getElementById("password-btn");
     const passwordInput = document.getElementById("guest-password");
     const passwordError = document.getElementById("password-error");
