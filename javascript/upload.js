@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") passwordBtn.click();
     });
 
-    passwordBtn.addEventListener("click", () => {
+    passwordBtn.addEventListener("click", () => { 
+        console.log("Entered:", JSON.stringify(passwordInput.value));
+        console.log("Expected:", JSON.stringify(GUEST_PASSWORD));
         if (passwordInput.value === GUEST_PASSWORD) {
             passwordGate.style.display  = "none";
             uploadSection.style.display = "block";
