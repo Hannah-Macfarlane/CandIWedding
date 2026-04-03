@@ -1,5 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Password Gate
+    const GUEST_PASSWORD = "caroline2026"; // Change this to whatever you want
+    const passwordBtn   = document.getElementById("password-btn");
+    const passwordInput = document.getElementById("guest-password");
+    const passwordError = document.getElementById("password-error");
+    const passwordGate  = document.getElementById("password-gate");
+    const uploadSection = document.getElementById("upload-section");
+
+    // Allow pressing Enter to submit password
+    passwordInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") passwordBtn.click();
+    });
+
+    passwordBtn.addEventListener("click", () => {
+        if (passwordInput.value === GUEST_PASSWORD) {
+            passwordGate.style.display  = "none";
+            uploadSection.style.display = "block";
+        } else {
+            passwordError.textContent = "Incorrect password. Please try again.";
+            passwordInput.value = "";
+            passwordInput.focus();
+        }
+    });
+
     const uploadBtn = document.getElementById("upload-btn");
     const gallery   = document.getElementById("gallery");
     const status    = document.getElementById("status");

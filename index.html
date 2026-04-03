@@ -260,9 +260,30 @@
         <section id="nav7" class="content-section text-center">
             <h2 class="section-title">Share Your Photos</h2>
             <p>We would love to see your photos from the day! Please share your favourite moments with us.</p>
-            <button class="btn" id="upload-btn">Upload Your Photos</button>
-            <div id="status"></div>
-            <div id="gallery"></div>
+
+            <!-- Password Gate -->
+            <div id="password-gate">
+                <p style="margin: 1.5rem 0 0.5rem;">Please enter the guest password to upload photos:</p>
+                <input type="password" id="guest-password" placeholder="Enter password" style="
+                padding: 0.75rem 1.5rem;
+                border: 1px solid var(--primary);
+                border-radius: 50px;
+                font-size: 1rem;
+                outline: none;
+                margin-right: 0.5rem;
+                background: var(--white);
+                color: var(--primary);
+            " />
+                <button class="btn" id="password-btn">Submit</button>
+                <p id="password-error" style="color: red; margin-top: 0.75rem; font-style: italic;"></p>
+            </div>
+
+            <!-- Upload Section (hidden until password is correct) -->
+            <div id="upload-section" style="display: none;">
+                <button class="btn" id="upload-btn">Upload Your Photos</button>
+                <div id="status"></div>
+                <div id="gallery"></div>
+            </div>
         </section>
     </main>
 
@@ -270,7 +291,8 @@
         <p>&copy; 2025 Hannah Macfarlane | Icons by <a href="https://icons8.com">Icons8</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="javascript/upload.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="javascript/upload.js"></script>
     <script src="javascript/script.js"></script>
     <script src="javascript/upload.js"></script>
 
