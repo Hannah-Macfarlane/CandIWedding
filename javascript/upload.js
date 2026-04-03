@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         status.textContent = "Preparing upload...";
 
         try {
+          // Step 1: Ask our serverless function for a secure signature
             const res = await fetch("/.netlify/functions/sign-upload", {
                 method: "POST",
             });
@@ -18,12 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             status.textContent = "";
 
+            // Step 2: Open the Cloudinary widget using the secure signature
             const widget = cloudinary.createUploadWidget(
                 {
                     cloudName:    cloudName,
                     apiKey:       apiKey,
                     uploadSignature: signature,
                     uploadSignatureTimestamp: timestamp,
+
+                    // Upload settings
                     folder:       "wedding-photos",
                     tags:         ["guest-upload"],
                     sources:      ["local", "camera"],
@@ -31,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     maxFiles:     20,
                     maxFileSize:  20000000,
                     clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
+
+                    // Widget appearance
                     styles: {
                         palette: {
                             window:         "#FFFFFF",
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         },
                     },
                 },
+                // Step 3: Handle the result
                 (error, result) => {
                     if (error) {
                         console.error("Upload error:", error);

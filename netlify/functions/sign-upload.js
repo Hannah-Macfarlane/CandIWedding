@@ -21,8 +21,9 @@ exports.handler = async function (event, context) {
     const signature = cloudinary.utils.api_sign_request(
       {
         timestamp: timestamp,
-        folder: "wedding-photos", // photos land in this folder in Cloudinary
+        folder: "wedding-photos",
         tags: "guest-upload",
+        source: "uw",
       },
       process.env.CLOUDINARY_API_SECRET
     );
@@ -37,6 +38,7 @@ exports.handler = async function (event, context) {
         timestamp,
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
+        source: "uw",
       }),
     };
   } catch (error) {
@@ -46,3 +48,4 @@ exports.handler = async function (event, context) {
     };
   }
 };
+
