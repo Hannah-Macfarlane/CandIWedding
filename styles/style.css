@@ -520,3 +520,25 @@ footer {
         font-size: 0.7rem;
     }
 }
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+#gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#status {
+    margin-top: 1rem;
+    color: var(--grey);
+    font-style: italic;
+}

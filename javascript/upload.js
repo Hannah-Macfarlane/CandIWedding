@@ -1,6 +1,6 @@
 const uploadBtn = document.getElementById("upload-btn");
-const gallery   = document.getElementById("gallery");
-const status    = document.getElementById("status");
+const gallery = document.getElementById("gallery");
+const status = document.getElementById("status");
 
 uploadBtn.addEventListener("click", async () => {
   status.textContent = "Preparing upload...";
@@ -20,36 +20,36 @@ uploadBtn.addEventListener("click", async () => {
     // Step 2: Open the Cloudinary widget using the secure signature
     const widget = cloudinary.createUploadWidget(
       {
-        cloudName:    cloudName,
-        apiKey:       apiKey,
+        cloudName: cloudName,
+        apiKey: apiKey,
         uploadSignature: signature,
         uploadSignatureTimestamp: timestamp,
 
         // Upload settings
-        folder:       "wedding-photos",
-        tags:         ["guest-upload"],
-        sources:      ["local", "camera"],   // local files or phone camera
-        multiple:     true,                  // allow multiple photos at once
-        maxFiles:     20,                    // cap per session
-        maxFileSize:  20000000,              // 20MB max per photo
+        folder: "wedding-photos",
+        tags: ["guest-upload"],
+        sources: ["local", "camera"],   // local files or phone camera
+        multiple: true,                  // allow multiple photos at once
+        maxFiles: 20,                    // cap per session
+        maxFileSize: 20000000,              // 20MB max per photo
         clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic"],
 
         // Widget appearance
         styles: {
           palette: {
-            window:      "#FFFFFF",
-            windowBorder:"#8b6f5e",
-            tabIcon:     "#8b6f5e",
-            menuIcons:   "#8b6f5e",
-            textDark:    "#3a3a3a",
-            textLight:   "#FFFFFF",
-            link:        "#8b6f5e",
-            action:      "#8b6f5e",
+            window: "#FFFFFF",
+            windowBorder: "#041d33",
+            tabIcon: "#041d33",
+            menuIcons: "#7da2c2",
+            textDark: "#041d33",
+            textLight: "#FFFFFF",
+            link: "#7da2c2",
+            action: "#041d33",
             inactiveTabIcon: "#aaa",
-            error:       "#F44235",
-            inProgress:  "#8b6f5e",
-            complete:    "#20B832",
-            sourceBg:    "#fdf8f4",
+            error: "#F44235",
+            inProgress: "#7da2c2",
+            complete: "#20B832",
+            sourceBg: "#faeeef",
           },
         },
       },
